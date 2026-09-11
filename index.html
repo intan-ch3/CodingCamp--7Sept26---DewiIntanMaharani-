@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="To-Do List Life Dashboard - organize your day." />
+  <title>To-Do List Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="theme-toggle-wrapper">
+      <button id="theme-toggle-btn" class="btn btn--icon" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">&#127769;</span>
+        <span class="theme-label">Dark Mode</span>
+      </button>
+    </div>
+    <div class="datetime" aria-live="polite" aria-atomic="true">
+      <time id="clock" class="clock" datetime="">00:00:00</time>
+      <p id="date-display" class="date-display"></p>
+    </div>
+    <p id="greeting" class="greeting" aria-live="polite">Good Morning!</p>
+    <form id="name-form" class="name-form" aria-label="Personalize greeting" novalidate>
+      <label for="name-input" class="name-form__label">Your name:</label>
+      <div class="name-form__controls">
+        <input type="text" id="name-input" class="input" placeholder="Enter your name" maxlength="50" autocomplete="nickname" aria-describedby="name-hint" />
+        <button type="submit" id="name-save-btn" class="btn btn--primary">Save</button>
+      </div>
+      <p id="name-hint" class="form-hint sr-only">Your name will be shown in the greeting above.</p>
+    </form>
+  </header>
+  <main class="dashboard-grid" role="main">
+    <section id="timer-section" class="card card--timer" aria-labelledby="timer-heading">
+      <h2 id="timer-heading" class="card__title">Focus Timer</h2>
+      <div id="timer-display" class="timer-display" role="timer" aria-live="off" aria-label="Remaining time">
+        <span id="timer-minutes" class="timer-display__minutes">25</span>
+        <span class="timer-display__separator" aria-hidden="true">:</span>
+        <span id="timer-seconds" class="timer-display__seconds">00</span>
+      </div>
+      <div class="timer-controls" role="group" aria-label="Timer controls">
+        <button id="timer-start-btn" class="btn btn--success" aria-label="Start timer">&#9654; Start</button>
+        <button id="timer-stop-btn" class="btn btn--warning" aria-label="Stop timer" disabled>&#9646;&#9646; Stop</button>
+        <button id="timer-reset-btn" class="btn btn--danger" aria-label="Reset timer">&#8635; Reset</button>
+      </div>
+      <p id="timer-notification" class="timer-notification sr-only" role="alert" aria-live="assertive">Time is up! Take a short break.</p>
+    </section>
+    <section id="todo-section" class="card card--todo" aria-labelledby="todo-heading">
+      <h2 id="todo-heading" class="card__title">To-Do List</h2>
+      <form id="todo-form" class="todo-form" aria-label="Add a new task" novalidate>
+        <div class="todo-form__controls">
+          <input type="text" id="todo-input" class="input" placeholder="Add a new task..." maxlength="200" autocomplete="off" aria-label="New task description" aria-describedby="todo-error" />
+          <button type="submit" id="todo-add-btn" class="btn btn--primary">Add</button>
+        </div>
+        <p id="todo-error" class="form-error" role="alert" aria-live="polite" hidden></p>
+      </form>
+      <ul id="todo-list" class="todo-list" aria-label="Task list" aria-live="polite"></ul>
+      <p id="todo-empty" class="todo-empty" aria-live="polite">No tasks yet. Add one above!</p>
+    </section>
+    <section id="quicklinks-section" class="card card--quicklinks" aria-labelledby="quicklinks-heading">
+      <h2 id="quicklinks-heading" class="card__title">Quick Links</h2>
+      <form id="quicklinks-form" class="quicklinks-form" aria-label="Add a quick link" novalidate>
+        <div class="quicklinks-form__fields">
+          <input type="text" id="quicklink-label-input" class="input" placeholder="Label (e.g. GitHub)" maxlength="50" autocomplete="off" aria-label="Quick link label" aria-describedby="quicklinks-error" />
+          <input type="url" id="quicklink-url-input" class="input" placeholder="URL (https://...)" maxlength="500" autocomplete="url" aria-label="Quick link URL" aria-describedby="quicklinks-error" />
+        </div>
+        <button type="submit" id="quicklink-add-btn" class="btn btn--primary">Add Link</button>
+        <p id="quicklinks-error" class="form-error" role="alert" aria-live="polite" hidden></p>
+      </form>
+      <ul id="quicklinks-list" class="quicklinks-list" aria-label="Quick links" aria-live="polite"></ul>
+      <p id="quicklinks-empty" class="quicklinks-empty" aria-live="polite">No quick links yet. Add one above!</p>
+    </section>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <p class="site-footer__text">Life Dashboard &mdash; stay focused, stay organized.</p>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
